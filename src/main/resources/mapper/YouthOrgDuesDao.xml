@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.organization.ylcsys.dao.YouthOrgDuesDao">
+	<resultMap id="youthOrgDuesMap" type="com.organization.ylcsys.entity.YouthOrgDues">
+		<id column="yodid" property="id" />
+		<result column="user_id" property="userId" />
+		<result column="uiname" property="userNameString" />
+		<result column="dues_value" property="duesValue" />
+		<result column="dues_date" property="duesDate" />
+		<result column="is_deduction" property="isDeduction" />
+		<result column="create_time" property="createTime" />
+		<result column="last_edit_time" property="lastEditTime" />
+	</resultMap>
+	<select id="queryYouthOrgDuesAll" resultMap="youthOrgDuesMap" resultType="com.organization.ylcsys.entity.YouthOrgDues">
+		SELECT
+		yod.id yodid,
+		yod.user_id,
+		yod.dues_value,
+		yod.dues_date,
+		yod.is_deduction,
+		yod.create_time,
+		yod.last_edit_time,
+		ui.name uiname
+		FROM
+		ylc_youth_org_dues yod
+		INNER JOIN
+		ylc_user_info ui
+		ON
+		yod.user_id=ui.id
+	</select>
+	<select id="queryYouthOrgDuesByTargetItem" resultMap="youthOrgDuesMap"  resultType="com.organization.ylcsys.entity.YouthOrgDues">
+		SELECT
+		yod.id yodid,
+		yod.user_id,
+		yod.dues_value,
+		yod.dues_date,
+		yod.is_deduction,
+		yod.create_time,
+		yod.last_edit_time,
+		ui.name uiname
+		FROM
+		ylc_youth_org_dues
+		INNER JOIN
+		ylc_user_info ui
+		ON
+		yod.user_id=ui.id
+		<where>
+			<if test="targetItem.id>0">
+			and id = #{targetItem.id}
+			</if>
+			<if test="targetItem.userId>0">
+			and user_id = #{targetItem.userId}
+			</if>
+		</where>
+	</select>
+	<insert id="insertIntoYouthOrgDuesByTargetItem" parameterType="com.organization.ylcsys.entity.YouthOrgDues"
+		useGeneratedKeys="true">
+		INSERT INTO
+		ylc_youth_org_dues(user_id,dues_value,is_deduction,
+		create_time,last_edit_time)
+		VALUES
+		(#{targetItem.userId},#{targetItem.duesValue},#{targetItem.isDeduction},
+		#{targetItem.createTime},#{targetItem.lastEditTime})
+	</insert>
+	<update id="updateYouthOrgDuesByTargetItem" parameterType="com.organization.ylcsys.entity.YouthOrgDues"
+		>
+		UPDATE ylc_youth_org_dues
+		<set>
+			<if test="targetItem.userId!= null">user_id=#{targetItem.userId},</if>
+			<if test="targetItem.duesValue!= null">dues_value=#{targetItem.duesValue},</if>
+			<if test="targetItem.isDeduction!= null">is_deduction=#{targetItem.isDeduction},</if>
+			<if test="targetItem.lastEditTime!= null">last_edit_time=#{targetItem.lastEditTime}</if>
+		</set>
+		WHERE
+		id = #{targetItem.id}
+	</update>
+	<delete id="deleteYouthOrgDuesByTargetItem">
+		DELETE FROM
+		ylc_youth_org_dues
+		WHERE
+		id = #{targetItem.id}
+	</delete>
+</mapper>
+    
