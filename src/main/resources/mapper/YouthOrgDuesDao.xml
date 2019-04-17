@@ -41,27 +41,27 @@
 		yod.last_edit_time,
 		ui.name uiname
 		FROM
-		ylc_youth_org_dues
+		ylc_youth_org_dues yod
 		INNER JOIN
 		ylc_user_info ui
 		ON
 		yod.user_id=ui.id
 		<where>
 			<if test="targetItem.id>0">
-			and id = #{targetItem.id}
+			and yod.id = #{targetItem.id}
 			</if>
 			<if test="targetItem.userId>0">
-			and user_id = #{targetItem.userId}
+			and yod.user_id = #{targetItem.userId}
 			</if>
 		</where>
 	</select>
 	<insert id="insertIntoYouthOrgDuesByTargetItem" parameterType="com.organization.ylcsys.entity.YouthOrgDues"
 		useGeneratedKeys="true">
 		INSERT INTO
-		ylc_youth_org_dues(user_id,dues_value,is_deduction,
+		ylc_youth_org_dues(user_id,dues_value,is_deduction,dues_date,
 		create_time,last_edit_time)
 		VALUES
-		(#{targetItem.userId},#{targetItem.duesValue},#{targetItem.isDeduction},
+		(#{targetItem.userId},#{targetItem.duesValue},#{targetItem.isDeduction},#{targetItem.duesDate},
 		#{targetItem.createTime},#{targetItem.lastEditTime})
 	</insert>
 	<update id="updateYouthOrgDuesByTargetItem" parameterType="com.organization.ylcsys.entity.YouthOrgDues"
@@ -70,6 +70,7 @@
 		<set>
 			<if test="targetItem.userId!= null">user_id=#{targetItem.userId},</if>
 			<if test="targetItem.duesValue!= null">dues_value=#{targetItem.duesValue},</if>
+			<if test="targetItem.duesDate!= null">dues_date=#{targetItem.duesDate},</if>
 			<if test="targetItem.isDeduction!= null">is_deduction=#{targetItem.isDeduction},</if>
 			<if test="targetItem.lastEditTime!= null">last_edit_time=#{targetItem.lastEditTime}</if>
 		</set>

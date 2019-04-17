@@ -33,7 +33,7 @@ public class YouthOrgDuesServiceImpl implements YouthOrgDuesService{
 	}
 	@Override
 	public boolean addYouthOrgDues(YouthOrgDues targetItem) {
-		int effectedNum=youthOrgDuesDao.updateYouthOrgDuesByTargetItem(targetItem);
+		int effectedNum=youthOrgDuesDao.insertIntoYouthOrgDuesByTargetItem(targetItem);
 		return effectedNum > 0 ? true:false;
 	}
 	@Override

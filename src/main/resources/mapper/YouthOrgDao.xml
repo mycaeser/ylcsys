@@ -38,17 +38,17 @@
 		yo.last_edit_time,
 		ui.name uiname
 		FROM
-		ylc_youth_org
+		ylc_youth_org yo
 		INNER JOIN
 		ylc_user_info ui
 		ON
 		yo.user_id=ui.id
 		<where>
 			<if test="targetItem.id>0">
-			and id = #{targetItem.id}
+			and yo.id = #{targetItem.id}
 			</if>
 			<if test="targetItem.userId>0">
-			and user_id = #{targetItem.userId}
+			and yo.user_id = #{targetItem.userId}
 			</if>
 		</where>
 	</select>

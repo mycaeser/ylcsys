@@ -5,7 +5,7 @@
   <artifactId>ylcsys</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>pssmsys Maven Webapp</name>
+  <name>ylcsys Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <properties>
 		<spring.version>4.3.7.RELEASE</spring.version>
@@ -147,7 +147,7 @@
 		</dependency>
   </dependencies>
   <build>
-    <finalName>pssmsys</finalName>
+    <finalName>ylcsys</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

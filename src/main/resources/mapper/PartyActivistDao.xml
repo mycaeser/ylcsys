@@ -41,27 +41,27 @@
 		pa.last_edit_time,
 		ui.name uiname
 		FROM
-		ylc_party_activist
+		ylc_party_activist pa
 		INNER JOIN
 		ylc_user_info ui
 		ON
 		pa.user_id=ui.id
 		<where>
 			<if test="targetItem.id>0">
-			and id = #{targetItem.id}
+			and pa.id = #{targetItem.id}
 			</if>
 			<if test="targetItem.userId>0">
-			and user_id = #{targetItem.userId}
+			and pa.user_id = #{targetItem.userId}
 			</if>
 		</where>
 	</select>
 	<insert id="insertIntoPartyActivistByTargetItem" parameterType="com.organization.ylcsys.entity.PartyActivist"
 		useGeneratedKeys="true">
 		INSERT INTO
-		ylc_party_activist(name,user_id,apply_date,is_checked,is_checked_opinion,
+		ylc_party_activist(user_id,apply_date,is_checked,is_checked_opinion,
 		create_time,last_edit_time)
 		VALUES
-		(#{targetItem.name},#{targetItem.userId},#{targetItem.applyDate},
+		(#{targetItem.userId},#{targetItem.applyDate},
 		#{targetItem.isChecked},#{targetItem.isCheckedOpinion},
 		#{targetItem.createTime},#{targetItem.lastEditTime})
 	</insert>
@@ -69,7 +69,6 @@
 		>
 		UPDATE ylc_party_activist
 		<set>
-			<if test="targetItem.name!= null">name=#{targetItem.name},</if>
 			<if test="targetItem.userId!= null">user_id=#{targetItem.userId},</if>
 			<if test="targetItem.applyDate!= null">apply_date=#{targetItem.applyDate},</if>
 			<if test="targetItem.isChecked!= null">is_checked=#{targetItem.isChecked},</if>
