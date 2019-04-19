@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <title>团员缴费</title>
+    <title>团员信息</title>
     <!-- Bootstrap Core CSS -->
     <link href="../resources/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- chartist CSS -->
@@ -101,13 +101,13 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li class="active" > <a class="waves-effect waves-dark" href="/ylcsys/pay/index" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">团费缴纳</span></a>
+                        <li  > <a class="waves-effect waves-dark" href="/ylcsys/pay/index" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">团费缴纳</span></a>
                         </li>
-                        <li> <a class="waves-effect waves-dark" href="/ylcsys/user/list" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">团员信息</span></a>
+                        <li class="active"> <a class="waves-effect waves-dark" href="/ylcsys/user/list" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">团员信息</span></a>
                         </li>
                         <li> <a class="waves-effect waves-dark" href="/ylcsys/pay/deduction" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">团费减免表</span></a>
                         </li>
-                        <li> <a class="waves-effect waves-dark" href="/ylcsys/activist/list" aria-expanded="false"><i class="mdi mdi-emoticon"></i><span class="hide-menu">积极分子</span></a>
+                        <li> <a class="waves-effect waves-dark" href="icon-material.html" aria-expanded="false"><i class="mdi mdi-emoticon"></i><span class="hide-menu">积极分子</span></a>
                         </li>
                         <li> <a class="waves-effect waves-dark" href="map-google.html" aria-expanded="false"><i class="mdi mdi-earth"></i><span class="hide-menu">团组织</span></a>
                         </li>
@@ -146,10 +146,10 @@
                 <!-- ============================================================== -->
                 <div class="row page-titles">
                     <div class="col-md-5 col-8 align-self-center">
-                        <h3 class="text-themecolor">团费缴纳</h3>
+                        <h3 class="text-themecolor">团员信息</h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/ylcsys/front/index">主页</a></li>
-                            <li class="breadcrumb-item active">团费缴纳</li>
+                            <li class="breadcrumb-item active">团员信息</li>
                         </ol>
                     </div>
                     
@@ -171,8 +171,8 @@
                         <div class="card" id="payOpView">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs profile-tab" role="tablist">
-                                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab">缴费填写</a> </li>
-                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile" role="tab">缴费标准</a> </li>
+                                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab">团员列表</a> </li>
+                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile" role="tab">新增团员</a> </li>
                               
                             </ul>
                             <!-- Tab panes -->
@@ -228,38 +228,49 @@
                                 <div class="tab-pane" id="profile" role="tabpanel">
                                     <div class="card-block" >
                                         <div class="row">
-                                            <div class="col-md-3 col-xs-6 b-r"> <strong>标准规定</strong>
-                                                <br>
-                                                <p class="text-muted">Johnathan Deo</p>
-                                            </div>
-                                            <div class="col-md-3 col-xs-6 b-r"> <strong>学校办公室电话</strong>
-                                                <br>
-                                                <p class="text-muted">(123) 456 7890</p>
-                                            </div>
-                                            <div class="col-md-3 col-xs-6 b-r"> <strong>团委联系人</strong>
-                                                <br>
-                                                <p class="text-muted">johnathan@admin.com</p>
-                                            </div>
-                                            <div class="col-md-3 col-xs-6"> <strong>Location</strong>
-                                                <br>
-                                                <p class="text-muted">London</p>
-                                            </div>
+                                            
+                                           
                                         </div>
-                                        <hr>
-                                        <p class="m-t-30">关于团费的交纳</p>
-                                        <p>1、凡有工资收入的团员，每月以比较固定的经常性工资收入为基数（见附注），按以下比例交纳团费。</p>
-                                        <p>（1）每月工资收入在400元（含400元）以下者， 交纳月工资收入的0.5%</p>
-                                        <p>（2）每月工资收入在400元以上者，交纳月工资收入的1%</p>
-                                        <p>临时工、协议工团员，在有工资收入期间，按上述规定的比例交纳团费。</p>
-                                        <p>2、在乡镇企业工作的农民团员按第一条第一款规定的比例交纳团费，其他农民团员每月交纳团费1角。</p>
-                                        <p>3、学生团员（包括没有工资收入的研究生团员），每月交纳团费1角。带薪学习的团员，按第一条第一款规定的比例交纳团费</p>
-                                        <p>4、城市和农村中从事个体工商经营的团员，每月按上季度交纳所得税后平均月收入，参照第一条第一款规定的比例交纳团费。</p>
-                                        <p>5、没有经济收入或依靠抚恤、救济为生的团员，每月交纳团费1角。
-　　										团员如确有生活困难，无力交纳团费，由本人提出申请，经支部团员大会讨论同意，团的基层委员会批准，可以少交或免交团费</p>
-										<p>6、解放军武警部队的团员交纳团费的标准，由总政组织和武警部队政治部决定</p>
-										<p>7、保留团籍的共产党员，从取得预备党员资格起，应交纳党费，可不交纳团费，自愿交纳团费者不限</p>
-                                        
-                                        <hr>
+                                       						<div class="card-block">
+                                <form class="form-horizontal form-material">
+                                    <div class="form-group">
+                                        <label class="col-md-12">姓名</label>
+                                        <div class="col-md-12">
+                                            <input type="text" id="userName" class="form-control form-control-line">
+                                        </div></div>
+                                     <div class="form-group">
+                                        <div class="col-md-12">
+                                            <div class="radio-box">
+												<input name="sex" type="radio" value="1" id="sex-1" checked>
+												<label for="sex-1">男</label>
+												<input type="radio" id="sex-2" value="0" name="sex">
+												<label for="sex-2">女</label>
+											</div>
+                                        </div></div>
+                                       <div class="form-group">
+                                        <label for="example-email" class="col-md-12">学号</label>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control form-control-line" id="idCard" >
+                                        </div></div>
+                                        <div class="form-group">
+                                        <label for="example-email" class="col-md-12">手机号</label>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control form-control-line" id="phone" >
+                                        </div></div>
+                                    <div class="form-group">
+                                        <label for="example-email" class="col-md-12">学院</label>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control form-control-line" name="example-email" id="unionName" >
+                                        </div></div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">班级</label>
+                                        <div class="col-md-12">
+                                            <input type="text" id="className" class="form-control form-control-line" >
+                                        </div></div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-success" id="submitBtn">提交</button>
+                                        </div></div></form></div>
                                       
                                     </div>
                                 </div>
@@ -373,7 +384,7 @@
     <!-- service code -->
      
     <script src="../resources/ylcsysadmin/js/com/WdatePicker.js"></script>
-    <script src="../resources/ylcsysadmin/js/pay/apply.js"></script>
+    <script src="../resources/ylcsysadmin/js/user/list.js"></script>
     <!-- service code -->
 </body>
 

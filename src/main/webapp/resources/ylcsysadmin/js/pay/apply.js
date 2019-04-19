@@ -33,9 +33,74 @@ $(function(){
 			'</td><td>'+userPhone+
 			'</td><td>'+userUnionName+
 			'</td><td>'+userClassName+
-			'</td><td>'+'<a href="javascript:;">缴费</a>'+
+			'</td><td>'+'<a onClick="payOperation('+userId+',\''+userName+'\',\''+userUnionName+'\',\''+userClassName+'\')" href="javascript:void(0)">缴费</a>'+
 			'</td></tr>';
 		});
 		$('#pview').html(viewHTML1+tmpHTML+viewHTML2);
 	});
+	
 })
+function payOperation(userId,userName,userUnionName,userClassName){
+		
+		var viewHTMLa1='<div class="card-block">'+
+        '<form class="form-horizontal form-material">'+
+        ' <div class="form-group">'+
+             '<label class="col-md-12">姓名</label>'+
+             '<div class="col-md-12">'+
+                 '<input type="text" id="userName" value="'+userName+'" class="form-control form-control-line" disabled="true" >'+
+             '</div></div>'+
+         '<div class="form-group">'+
+             '<label for="example-email" class="col-md-12">学院</label>'+
+             '<div class="col-md-12">'+
+                 '<input type="text" id="unionName" value="'+userUnionName+'"  class="form-control form-control-line" disabled="true" >'+
+             '</div></div>'+
+         '<div class="form-group">'+
+             '<label class="col-md-12">班级</label>'+
+             '<div class="col-md-12">'+
+                 '<input type="text" id="className" value="'+userClassName+'" class="form-control form-control-line"disabled="true" >'+
+             '</div></div>'+
+         '<div class="form-group">'+
+             '<label class="col-md-12">缴费日期</label>'+
+             '<div class="col-md-12">'+
+                 '<input type="text" onfocus="WdatePicker({dateFmt:\'yyyy-MM-dd\'})" id="payMonth" class="form-control form-control-line">'+
+             '</div></div>'+
+             '<div class="form-group">'+
+             '<label class="col-md-12">缴费金额</label>'+
+             '<div class="col-md-12">'+
+                 '<input type="text"  id="payValue" class="form-control form-control-line">'+
+             '</div></div>'+
+         '<div class="form-group">'+
+             '<div class="col-sm-12">'+
+                 '<button class="btn btn-success" id="submitBtn">提交</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+
+                 '<a href="/ylcsys/pay/index" class="btn waves-effect waves-light btn-warning hidden-md-down"> 返回</a>'+
+             '</div></div></form></div>';
+		$('#payOpView').html(viewHTMLa1);
+		$('#submitBtn').click(function(){
+			var addPayInfoUrl='/ylcsys/youthorgduesadmin/add';
+			var duesValue=$('#payValue').val();
+			var duesDate=$('#payMonth').val();
+			if(duesValue==''||duesDate==''){
+				alert('请输入完整');
+				return;
+			}
+			var formData=new FormData();
+			formData.append('duesValue',duesValue);
+			formData.append('duesDate',duesDate);
+			formData.append('userId',userId);
+			$.ajax({
+				url : addPayInfoUrl,
+				type : 'POST',
+				data : formData,
+				contentType : false,
+				processData : false,
+				cache : false,
+				success : function(data) {
+					if(data.success){
+						alert('缴费成功');
+						self.location='/ylcsys/pay/index';
+					}
+					
+				}
+			});
+		});
+	}

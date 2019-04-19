@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class PayerController {
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	private String showAccountLevelList() {// 显示缴费页面
+	private String showApplyIndex() {// 显示缴费页面
 		return "pay/apply";
+	}
+	@RequestMapping(value = "/deduction", method = RequestMethod.GET)
+	private String showDeduction() {// 显示缴费减免
+		return "pay/deduction";
 	}
 }
