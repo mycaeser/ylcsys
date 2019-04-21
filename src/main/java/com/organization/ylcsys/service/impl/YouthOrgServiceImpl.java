@@ -43,4 +43,11 @@ public class YouthOrgServiceImpl implements YouthOrgService{
 		int effectedNum=youthOrgDao.deleteYouthOrgByTargetItem(targetItem);
 		return effectedNum > 0 ? true:false;
 	}
+	@Override
+	public boolean deleteYouthOrgByUserId(Integer userId) {
+		YouthOrg targetItem=new YouthOrg();
+		targetItem.setUserId(userId);
+		int effectedNum=youthOrgDao.deleteYouthOrgByTargetItem(targetItem);
+		return effectedNum > 0 ? true:false;
+	}
 }

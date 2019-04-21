@@ -25,4 +25,8 @@ public interface YouthOrgService {
 	 * 删除一条团组织信息
 	 */
 	boolean deleteYouthOrgById(Integer id);
+	/*
+	 * 通过用户编号删除一条团组织信息
+	 */
+	boolean deleteYouthOrgByUserId(Integer userId);
 }

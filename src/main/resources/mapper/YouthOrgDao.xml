@@ -70,14 +70,26 @@
 			<if test="targetItem.content!= null">content=#{targetItem.content},</if>
 			<if test="targetItem.lastEditTime!= null">last_edit_time=#{targetItem.lastEditTime}</if>
 		</set>
-		WHERE
-		id = #{targetItem.id}
+		<where>
+			<if test="targetItem.id>0">
+			and id = #{targetItem.id}
+			</if>
+			<if test="targetItem.userId>0">
+			and user_id = #{targetItem.userId}
+			</if>
+		</where>
 	</update>
 	<delete id="deleteYouthOrgByTargetItem">
 		DELETE FROM
 		ylc_youth_org
-		WHERE
-		id = #{targetItem.id}
+		<where>
+			<if test="targetItem.id>0">
+			and id = #{targetItem.id}
+			</if>
+			<if test="targetItem.userId>0">
+			and user_id = #{targetItem.userId}
+			</if>
+		</where>
 	</delete>
 </mapper>
     

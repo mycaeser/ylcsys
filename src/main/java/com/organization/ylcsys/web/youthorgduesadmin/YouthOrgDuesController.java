@@ -34,7 +34,7 @@ public class YouthOrgDuesController {
 	 */
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	@ResponseBody
-	private Map<String, Object> Add( HttpServletRequest request){
+	private String Add( HttpServletRequest request){
 		Map<String, Object> modelMap = new HashMap<String, Object>();
 		Integer duesValue = HttpServletRequestUtil.getInt(request, "duesValue");
 		String duesDate = HttpServletRequestUtil.getString(request, "duesDate");
@@ -59,7 +59,7 @@ public class YouthOrgDuesController {
 			e.printStackTrace();
 		}
 		
-		return modelMap;
+		return "org/youth";
 	}
 	/**
 	 * 获取全部缴费信息

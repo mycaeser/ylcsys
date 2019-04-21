@@ -63,7 +63,7 @@ public class ActivistController {
 	 */
 	@RequestMapping(value = "/updateactivistbyid", method = RequestMethod.POST)
 	@ResponseBody
-	private Map<String, Object> updateActivistById(HttpServletRequest request) {
+	private String updateActivistById(HttpServletRequest request) {
 		Map<String, Object> modelMap = new HashMap<String, Object>();
 		Integer id =Integer.parseInt(HttpServletRequestUtil.getString(request, "id"));
 		String isCheckedOpinion=HttpServletRequestUtil.getString(request, "isCheckedOpinion");
@@ -77,6 +77,6 @@ public class ActivistController {
 		targetItem.setLastEditTime(aimTimestamp);
 		Boolean result = partyActivistService.updatePartyActivist(targetItem);
 		modelMap.put("result", result);
-		return modelMap;
+		return "user/activist";
 	}
 }
